@@ -10,12 +10,8 @@ public class Teacher extends Member {
         this.subject = subject;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
     @Override
     public String getInfo() {
-        return String.format(" mame: %s, id: %s, subject: %s,  (teacher)", getName(), getId(), subject);
+        return String.format("mame: %s, id: %s, subject: %s, (teacher)", getName(), getId(), subject);
     }
 }

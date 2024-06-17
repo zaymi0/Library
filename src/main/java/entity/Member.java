@@ -5,7 +5,7 @@ import java.util.List;
 public class Member  {
     private String name;
     private String id;
-    private List<Book> borrowedBooks;
+    private final List<Book> borrowedBooks;
 
      public Member(String name, String id, List<Book> borrowedBooks) {
         this.name = name;
@@ -17,24 +17,12 @@ public class Member  {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void returnBorrowedBook(Book book) {
-        this.borrowedBooks.remove(book);
-    }
-
-    public void addBorrowedBook(Book borrowedBook) {
-        this.borrowedBooks.add(borrowedBook);
+    public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
     }
 
     public String getInfo() {

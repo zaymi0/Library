@@ -14,11 +14,8 @@ public class Student extends Member {
         return gradeLevel;
     }
 
-    public void setGradeLevel(int gradeLevel) {
-        this.gradeLevel = gradeLevel;
-    }
     @Override
     public String getInfo() {
-        return String.format("mame: %s, id: %s, gradeLevel: %d (entity.Student)", getName(), getId(), getGradeLevel());
+        return String.format("mame: %s, id: %s, gradeLevel: %d (Student)", getName(), getId(), getGradeLevel());
     }
 }

@@ -13,16 +13,12 @@ public class Book {
         this.isAvailable = isAvailable;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getId() {
+        return id;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public String getTitle() {
+        return title;
     }
 
     public boolean getIsAvailable() {
