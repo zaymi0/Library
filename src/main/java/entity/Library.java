@@ -1,9 +1,11 @@
 package entity;
 
 import execption.BookAlreadyBorrowedException;
+import execption.BookNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Library {
     private List<Book> collectionOfBooks = new ArrayList<>();
@@ -46,16 +48,14 @@ public class Library {
         collectionOfBooks.removeIf(book -> book.getId().equals(memberId));
     }
 
-    public void takeBook(Member member, String bookName) throws BookAlreadyBorrowedException {
-        for (Book book : collectionOfBooks) {
-            if (book.getTitle().equals(bookName)) {
-                if (!book.getIsAvailable()) {
-                    throw new BookAlreadyBorrowedException("Книга занята");
-                } else {
-                    member.getBorrowedBooks().add(book);
-                    book.setIsAvailable(false);
-                }
-            }
-        }
+    public void takeBook(Member member, String bookName) throws BookAlreadyBorrowedException, BookNotFoundException {
+        takeBook(member, findBookByTitle(bookName));
+    }
+
+    public Book findBookByTitle(String bookName) throws BookNotFoundException {
+        return collectionOfBooks.stream()
+                .filter(book -> book.getTitle().equalsIgnoreCase(bookName))
+                .findFirst()
+                .orElseThrow(() -> new BookNotFoundException("Книга не найдена"));
     }
 }

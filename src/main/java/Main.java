@@ -1,5 +1,6 @@
 import entity.*;
 import execption.BookAlreadyBorrowedException;
+import execption.BookNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +31,17 @@ public class Main {
         try {
             library.takeBook(petya, pythonBook);
             library.takeBook(vasya, "Thinking in Java");
-        } catch (BookAlreadyBorrowedException e) {
+        } catch (BookAlreadyBorrowedException | BookNotFoundException e) {
             System.out.println("ошибка: " + e.getMessage());
         }
         library.returnBook(petya, pythonBook);
         library.deleteBookById("5645");
         library.deleteMemberById("247833");
+        try {
+            library.findBookByTitle("Python Programming for the Absolute Beginner");
+        } catch (BookNotFoundException e) {
+            System.out.println("ошибка: " + e.getMessage());
+        }
+
     }
 }
